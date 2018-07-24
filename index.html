@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="dist/bundle.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var nist = kyber.curve.nist;
+      var p256 = new nist.Curve(nist.Params.p256);
+      var randomPoint = p256.point().pick();
+      var randomScalar = p256.scalar().pick();
+
+      var secp256k1curv = kyber.curve.secp256k1;
+      var secp256k1 = new secp256k1curv.Curve(secp256k1curv.Params.k256);
+      var randomPointk1 = secp256k1.point().pick();
+      var randomScalark1 = secp256k1.scalar().pick();
+      window.onload = function() {
+        var pRef = document.getElementById("point");
+        var sRef = document.getElementById("scalar");
+        var p = document.createTextNode("Pointp256: " + randomPoint.string());
+        var s = document.createTextNode("Scalarp256: " + randomScalar.string());
+        pRef.appendChild(p);
+        sRef.appendChild(s);
+
+        var pRef1 = document.getElementById("point1");
+        var sRef1 = document.getElementById("scalar1");
+        var p1 = document.createTextNode("Pointk256: " + randomPointk1.string());
+        var s1 = document.createTextNode("Scalark256: " + randomScalark1.string());
+        pRef1.appendChild(p1);
+        sRef1.appendChild(s1);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <p id="point"></p>
+      <p id="scalar"></p>
+      <p id="point1"></p>
+      <p id="scalar1"></p>
+    </div>
+  </body>
+</html>
+
