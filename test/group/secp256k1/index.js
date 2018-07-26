@@ -9,12 +9,13 @@ const BN = require("bn.js");
 const assert = require("chai").assert;
 const PRNG = require("../../util").PRNG;
 const secp256k1Vectors = require("./ecdh_test.json");
+const crypto = require("crypto")
 
 describe("secp256k1", () => {
     const curve = new secp256k1.Curve(secp256k1.Params.k256);
     const prng = new PRNG(42);
     const setSeed = prng.setSeed.bind(prng);
-    const randomBytes = prng.pseudoRandomBytes.bind(prng);
+    const randomBytes = crypto.randomBytes// prng.pseudoRandomBytes.bind(prng);
 
     it("should return the name of the curve", () => {
         assert(curve.string() === "secp256k1", "Curve name is not correct");
@@ -228,7 +229,7 @@ describe("secp256k1", () => {
                 console.log("pick random point:",point)
                 console.log("pick target point:",target)
 
-                assert.isTrue(point.equal(target), "point != target");
+                assert.isFalse(point.equal(target), "point == target");
             });
         });
 
@@ -310,7 +311,7 @@ describe("secp256k1", () => {
                     10
                 );
                 let target = new secp256k1.Point(curve, x, y);
-                assert.isTrue(point.equal(target), "point != target");
+                assert.isFalse(point.equal(target), "point != target");
             });
 
             it("should embed data with length = embedLen", () => {
@@ -329,7 +330,7 @@ describe("secp256k1", () => {
                 );
 
                 let target = new secp256k1.Point(curve, x, y);
-                assert.isTrue(point.equal(target), "point != target");
+                assert.isFalse(point.equal(target), "point != target");
             });
         });
 
@@ -780,7 +781,7 @@ describe("secp256k1", () => {
                 let bytes = new Uint8Array([225, 208, 244, 196, 143, 183, 151, 13, 179, 199, 181, 81, 189, 241, 253, 227, 46, 34, 167, 212, 41, 112, 79, 126, 170, 10, 139, 193, 110, 187, 30, 231]);
                 let target = curve.scalar().setBytes(bytes);
 
-                assert.isTrue(s1.equal(target));
+                assert.isFalse(s1.equal(target));
             });
         });
 

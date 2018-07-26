@@ -30,7 +30,7 @@ const nodeConfig = {
 const browserConfig = {
   entry: "./index.js",
   output: {
-    filename: "bundle.min.js",
+    filename: "kyber.min.js",
     path: path.resolve(__dirname, "dist"),
     library: "kyber",
     libraryTarget: "umd"
@@ -50,7 +50,7 @@ const browserConfig = {
       }
     ]
   },
- // plugins: [new UglifyJsPlugin()]
+ plugins: [new UglifyJsPlugin()]
 };
 
 module.exports = [nodeConfig, browserConfig];
