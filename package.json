@@ -1,9 +1,9 @@
 {
-  "name": "@dedis/kyber-js",
+  "name": "@usechain/kyberjs",
   "version": "0.0.10",
   "description": "A javascript implementation of Kyber interfaces",
-  "main": "dist/bundle.node.min.js",
-  "browser": "dist/bundle.min.js",
+  "main": "dist/kyber.node.min.js",
+  "browser": "dist/kyber.min.js",
   "scripts": {
     "build": "node node_modules/.bin/webpack",
     "doc": "node node_modules/.bin/jsdoc2md -f 'lib/**' > doc/doc.md",
@@ -25,7 +25,7 @@
   ],
   "author": "DEDIS",
   "license": "AGPL-3.0",
-  "homepage": "https://github.com/dedis/cothority",
+  "homepage": "https://github.com/usechain/kyberjs",
   "dependencies": {
     "bn.js": "^4.11.8",
     "elliptic": "^6.4.0",
